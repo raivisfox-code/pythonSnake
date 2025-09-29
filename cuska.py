@@ -2,6 +2,7 @@ from tkinter import Canvas, Tk #GUI bibliotēka TK Inter
 
 class Game:
     def __init__(self, canvas):
+        self.canvas = canvas #veidojām konstruktora argumentu, kuru varēsim izmantot kā parametru turpmāk, šīs arguments ir tas pats canvas
         pass
 
 root = Tk() #izveidojām objektu, kas ir lodziņš
