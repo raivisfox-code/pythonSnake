@@ -1,0 +1,2 @@
+# pythonSnake
+spēle čūska
