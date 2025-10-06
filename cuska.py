@@ -11,6 +11,7 @@ class Game:
         self.GAME()
 
     def draw(self):# objektu zīmēšana
+        self.canvas.delete(all) #izdzēš visu, kas ir uz ekrāna
         x_apple, y_apple = self.apple_coords
         self.canvas.create_rectangle(
             x_apple*10, y_apple*10, (x_apple+1)*10, (y_apple+1)*10, 
