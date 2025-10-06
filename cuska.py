@@ -5,15 +5,23 @@ class Game:
     def __init__(self, canvas):
         self.canvas = canvas #veidojām konstruktora argumentu, kuru varēsim izmantot kā parametru turpmāk, šīs arguments ir tas pats canvas
         self.apple_coords = [randint(0, 29) for i in range(2)]
-        
+        self.snake_coords = [[14, 14]] #definējām masīvu, kas dināmiskais masīvs
+
         self.GAME()
 
-    def draw(self):
+    def draw(self):# objektu zīmēšana
         x_apple, y_apple = self.apple_coords
-        print(x_apple)
-        self.canvas.create_rectangle(x_apple*10, y_apple*10, (x_apple+1)*10, (y_apple+1)*10, fill = "red", width = 0)
+        self.canvas.create_rectangle(
+            x_apple*10, y_apple*10, (x_apple+1)*10, (y_apple+1)*10, 
+            fill = "red", width = 0
+        )
+        for x, y in self.snake_coords:
+            self.canvas.create_rectangle(
+                x*10, y*10, (x+1)*10, (y+1)*10, fill="green", width=0
+            )
 
-    def GAME(self):
+
+    def GAME(self): #spēles loģika būs šeit
         self.draw()
 
 root = Tk() #izveidojām objektu, kas ir lodziņš
