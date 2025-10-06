@@ -6,7 +6,8 @@ class Game:
         self.canvas = canvas #veidojām konstruktora argumentu, kuru varēsim izmantot kā parametru turpmāk, šīs arguments ir tas pats canvas
         self.apple_coords = [randint(0, 29) for i in range(2)]
         self.snake_coords = [[14, 14]] #definējām masīvu, kas dināmiskais masīvs
-
+        self.vector = {"Up":(0, -1), "Down":(0, 1), "Left":(-1, 0), "Right": (1, 0)}
+        self.direction = self.vector["Right"]
         self.GAME()
 
     def draw(self):# objektu zīmēšana
@@ -23,6 +24,10 @@ class Game:
 
     def GAME(self): #spēles loģika būs šeit
         self.draw()
+        x, y = self.snake_coords[0]
+        x += self.direction[0]; y += self.direction[1]
+        self.snake_coords.insert(0, [x, y])
+        self.canvas.after(100, self.GAME)
 
 root = Tk() #izveidojām objektu, kas ir lodziņš
 root.title("* * * Č Ū S K A * * *")
