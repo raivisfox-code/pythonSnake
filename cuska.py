@@ -8,19 +8,28 @@ class Game:
         self.snake_coords = [[14, 14]] #definējām masīvu, kas dināmiskais masīvs
         self.vector = {"Up":(0, -1), "Down":(0, 1), "Left":(-1, 0), "Right": (1, 0)}
         self.direction = self.vector["Right"]
+        self.canvas.focus_set() #lai varētu uztvert taustiņu nospiešanu
+        self.canvas.bind("<KeyPress>", self.set_direction) #saista notikumu ar funkciju
         self.GAME()
 
-    def draw(self):# objektu zīmēšana
-        self.canvas.delete(all) #izdzēš visu, kas ir uz ekrāna
-        x_apple, y_apple = self.apple_coords
+    def new_method(self):
+        return self.set_direction
+
+def set_direction(self, event): #funkcija, kas maina kustības virzienu
+    if event.keysym in self.vector:
+        self.direction = self.vector[event.keysym]
+
+def draw(self): # objektu zīmēšana
+    self.canvas.delete("all") #izdzēš visu, kas ir uz ekrāna
+    x_apple, y_apple = self.apple_coords
+    self.canvas.create_rectangle(
+        x_apple*10, y_apple*10, (x_apple+1)*10, (y_apple+1)*10, 
+        fill = "red", width = 0
+    )
+    for x, y in self.snake_coords:
         self.canvas.create_rectangle(
-            x_apple*10, y_apple*10, (x_apple+1)*10, (y_apple+1)*10, 
-            fill = "red", width = 0
+            x*10, y*10, (x+1)*10, (y+1)*10, fill="green", width=0
         )
-        for x, y in self.snake_coords:
-            self.canvas.create_rectangle(
-                x*10, y*10, (x+1)*10, (y+1)*10, fill="green", width=0
-            )
 
 
     def GAME(self): #spēles loģika būs šeit
