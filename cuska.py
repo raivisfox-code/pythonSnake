@@ -9,7 +9,7 @@ class Game:
         self.vector = {"Up":(0, -1), "Down":(0, 1), "Left":(-1, 0), "Right": (1, 0)}
         self.direction = self.vector["Right"]
         self.canvas.focus_set() #lai varētu uztvert taustiņu nospiešanu
-        self.canvas.bind("<KeyPress>", self.set_direction) #saista notikumu ar funkciju
+        self.canvas.bind ["<KeyPress>"],(self.set_direction) #saista notikumu ar funkciju
         self.GAME()
 
     def new_method(self):
