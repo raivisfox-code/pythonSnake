@@ -14,7 +14,7 @@ class Game:
         self.canvas.focus_set()  # lai varētu uztvert taustiņu nospiešanu
         self.canvas.bind("<Key_Press>", )  # saista notikumu ar funkciju
 
-        self.Game()
+    def __init__(self.Game):
 
     def new_method(self):
         return self.set_direction
